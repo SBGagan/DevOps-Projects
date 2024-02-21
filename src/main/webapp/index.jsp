@@ -1,15 +1,39 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Hello World!</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docker Container Information</title>
 </head>
 <body>
-	<h1>Hello World! Welcome to DevOps Project</h1>
-       <h1>DevOps project for Configuring Jenkins server and Installing Tomcat onto Jenkin's Server for Deploying our Application(CICD Pipeline)</h1>
-        <h1>DevOps, a portmanteau of "development" and "operations," is a set of practices, principles, and cultural philosophies that aim to improve collaboration and communication between software development and IT operations teams. The goal of DevOps is to shorten the software development life cycle, enhance the frequency and reliability of software releases, and foster a culture of continuous integration and continuous delivery (CI/CD)</h1>
-	<p>
-		It is now
-		<%= new java.util.Date() %></p>
-	<p>
-		You are coming from 
-		<%= request.getRemoteAddr()  %></p>
+
+<h1>Docker Container Information</h1>
+
+<div id="containerInfo"></div>
+
+<script>
+    // Function to fetch Docker container information
+    function fetchContainerInfo() {
+        fetch('/containers/json')  // This endpoint retrieves a list of containers
+            .then(response => response.json())
+            .then(data => {
+                // Process the container information
+                let containerInfoHTML = '<h2>Container List</h2>';
+                containerInfoHTML += '<ul>';
+                data.forEach(container => {
+                    containerInfoHTML += `<li>${container.Names[0]} - ${container.State}</li>`;
+                });
+                containerInfoHTML += '</ul>';
+                // Display the container information in the specified div
+                document.getElementById('containerInfo').innerHTML = containerInfoHTML;
+            })
+            .catch(error => console.error('Error fetching container information:', error));
+    }
+
+    // Fetch container information when the page loads
+    window.onload = fetchContainerInfo;
+</script>
+
 </body>
+</html>
+
