@@ -1,8 +1,8 @@
 DevOps Projects (CI/CD Pipeline)
 ===============
-DevOps Project-1: DevOps Project for Configuring Jenkins
+** DevOps Project-1: DevOps Project for Configuring Jenkins
 server and Installing Tomcat onto Jenkin's Server for Deploying our
-Application.
+Application. **
 Project-1 Objective: The objective of this Project is to configure Jenkins to build
 and deploy applications. It includes Setting up Jenkins, installing necessary plugins
 and configuring Jenkins to build Maven projects, and `Installing Tomcat Server for
